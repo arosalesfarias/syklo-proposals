@@ -1,0 +1,67 @@
+<section class="section">
+  <div class="container">
+    <div class="select">
+      <select name="paisFiltro">
+        <option *ngFor="let pais of paises()" value="pais">
+          {{ pais }}
+        </option>
+      </select>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="columns container">
+    <div class="column">
+      <h2 class="block">Compras</h2>
+      <div class="card" *ngFor="let compra of compras()">
+        <header class="card-header">
+          <p class="card-header-title">
+            {{ compra.usuario }}
+          </p>
+          <button class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </header>
+        <div class="card-content">
+          <div class="content">{{ compra.pais }} - {{ compra.oferta }}</div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">{{ compra.oferta }}</a>
+          <a href="#" class="card-footer-item">{{ compra.precio }}</a>
+          <a href="#" class="card-footer-item">{{ compra.metodo_de_pago }}</a>
+        </footer>
+      </div>
+    </div>
+    <div class="column">
+      <h2 class="block">Ventas</h2>
+      <div class="card" *ngFor="let venta of ventas()">
+        <header class="card-header">
+          <p class="card-header-title">
+            {{ venta.usuario }}
+          </p>
+          <button class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </header>
+        <div class="card-content">
+          <div class="content">{{ venta.pais }} - {{ venta.oferta }}</div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">{{ venta.monto }}</a>
+          <a href="#" class="card-footer-item">{{ venta.precio }}</a>
+          <a href="#" class="card-footer-item">{{ venta.metodo_de_pago }}</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

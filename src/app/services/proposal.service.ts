@@ -27,9 +27,11 @@ export class ProposalService {
     lista.map((it) => this.metodosDePago.add(it.metodo_de_pago));
   }
 
-  compras(): Proposal[] {
-    let filtrado = this.proposals.compras.filter(
-      (it) => it.pais == 'AR' && it.monto.includes('ARS')
+  compras(paisFiltro: String, MDPFiltro: String): Proposal[] {
+    let filtrado = this.proposals.compras.filter((it) =>
+      paisFiltro == '' && MDPFiltro == ''
+        ? true
+        : it.pais == paisFiltro || it.metodo_de_pago == MDPFiltro
     );
     let ordenado = filtrado.sort(function (a, b) {
       return (
@@ -41,9 +43,11 @@ export class ProposalService {
     //console.log(ordenado);
     return ordenado;
   }
-  ventas(): Proposal[] {
-    let filtrado = this.proposals.ventas.filter(
-      (it) => it.pais == 'AR'// && it.metodo_de_pago == 'Binance Pay' // it.pais == 'AR' && it.monto.includes('ARS')
+  ventas(paisFiltro: String, MDPFiltro: String): Proposal[] {
+    let filtrado = this.proposals.ventas.filter((it) =>
+      paisFiltro == '' && MDPFiltro == ''
+        ? true
+        : it.pais == paisFiltro || it.metodo_de_pago == MDPFiltro
     );
     let ordenado = filtrado.sort(function (a, b) {
       return (
@@ -61,5 +65,12 @@ export class ProposalService {
       this.paises.add(it.pais);
     });
     return this.paises;
+  }
+
+  MDPsFiltro(): Set<String> {
+    this.proposals.all().map((it) => {
+      this.metodosDePago.add(it.metodo_de_pago);
+    });
+    return this.metodosDePago;
   }
 }

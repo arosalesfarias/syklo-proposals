@@ -12,24 +12,25 @@ import { ProposalService } from './services/proposal.service';
 export class AppComponent implements OnInit {
   constructor(public serv: ProposalService) {}
   paisFiltro: String = '';
+  MDPFiltro: String = '';
 
   async ngOnInit() {
     await this.serv.obtener();
   }
 
   ventas(): Proposal[] {
-    return this.serv.ventas();
+    return this.serv.ventas(this.paisFiltro, this.MDPFiltro);
   }
 
-  compras() {
-    return this.serv.compras();
+  compras(): Proposal[] {
+    return this.serv.compras(this.paisFiltro, this.MDPFiltro);
   }
 
   paises() {
     return this.serv.paisesFiltro();
   }
 
-  onChange() {
-    console.log(this.paisFiltro);
+  metodosDePago() {
+    return this.serv.MDPsFiltro();
   }
 }

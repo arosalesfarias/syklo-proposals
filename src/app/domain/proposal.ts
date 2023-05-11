@@ -7,6 +7,7 @@ export class Proposal {
   pais: String;
   precio: String;
   usuario: String;
+  moneda: String;
 
   constructor(
     ico: String,
@@ -26,6 +27,7 @@ export class Proposal {
     this.pais = pai;
     this.precio = prc;
     this.usuario = usu;
+    this.moneda = this.monto.slice(-3);
   }
 
   esPais(): Boolean {
@@ -39,6 +41,19 @@ export class Proposal {
   precioNum() {
     return Number(this.precio.slice(0, this.precio.length - 4));
   }
+
+  static JsontoProposal(json): Proposal {
+    return new Proposal(
+      json.icon,
+      json.metodo_de_pago,
+      json.monto,
+      json.oferta,
+      json.operacion,
+      json.pais,
+      json.precio,
+      json.usuario
+    );
+  }
 }
 
 export class Proposals {
@@ -47,8 +62,8 @@ export class Proposals {
 
   constructor(compras: Proposal[], ventas: Proposal[]) {
     //Las compras son las ventas y las ventas son las compras
-    this.compras = ventas;
-    this.ventas = compras;
+    this.compras = ventas.map((it) => Proposal.JsontoProposal(it));
+    this.ventas = compras.map((it) => Proposal.JsontoProposal(it));
   }
 
   all(): Proposal[] {

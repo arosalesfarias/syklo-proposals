@@ -6,7 +6,12 @@ import { Proposal, Proposals } from '../domain/proposal';
   providedIn: 'root',
 })
 export class ProposalService {
-  proposals: Proposals = { compras: [], ventas: [], all: () => [] };
+  proposals: Proposals = {
+    compras: [],
+    ventas: [],
+    all: () => [],
+    paisesList: () => [],
+  };
   paises: Set<String> = new Set();
   metodosDePago: Set<String> = new Set();
 
@@ -59,13 +64,9 @@ export class ProposalService {
   }
 
   paisesFiltro(): Set<String> {
-    let paisesArray: String[] = [];
-    this.proposals.all().map((it) => {
-      if (it.pais != null) paisesArray.push(it.pais);
-    });
-    paisesArray.sort((a, b) => a.localeCompare(b.toString()));
-    paisesArray.map((it) => this.paises.add(it));
-    console.log(this.paises);
+    this.proposals.paisesList().forEach((it) => this.paises.add(it));
+    this.paises.delete(null);
+    this.paises.delete(undefined);
     return this.paises;
   }
 

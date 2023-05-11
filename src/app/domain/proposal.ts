@@ -54,4 +54,12 @@ export class Proposals {
   all(): Proposal[] {
     return this.compras.concat(this.ventas);
   }
+
+  paisesList(): String[] {
+    return this.all()
+      .map((it) => {
+        if (it.pais != null) return it.pais;
+      })
+      .sort((a, b) => a.localeCompare(b.toString()));
+  }
 }

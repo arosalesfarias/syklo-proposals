@@ -3,24 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeroesComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
+export class AppModule {}
 
 /*
 Copyright Google LLC. All Rights Reserved.

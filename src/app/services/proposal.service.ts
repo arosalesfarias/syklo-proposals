@@ -59,9 +59,13 @@ export class ProposalService {
   }
 
   paisesFiltro(): Set<String> {
+    let paisesArray: String[] = [];
     this.proposals.all().map((it) => {
-      this.paises.add(it.pais);
+      if (it.pais != null) paisesArray.push(it.pais);
     });
+    paisesArray.sort((a, b) => a.localeCompare(b.toString()));
+    paisesArray.map((it) => this.paises.add(it));
+    console.log(this.paises);
     return this.paises;
   }
 

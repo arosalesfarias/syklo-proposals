@@ -28,10 +28,9 @@ export class ProposalService {
   }
 
   compras(paisFiltro: String, MDPFiltro: String): Proposal[] {
-    let filtrado = this.proposals.compras.filter((it) =>
-      paisFiltro == '' && MDPFiltro == ''
-        ? true
-        : it.pais == paisFiltro || it.metodo_de_pago == MDPFiltro
+    let filtrado = this.proposals.compras.filter(
+      (it) =>
+        paisFiltro == '' && MDPFiltro == '' ? true : it.pais == paisFiltro //|| it.metodo_de_pago == MDPFiltro
     );
     let ordenado = filtrado.sort(function (a, b) {
       return (
@@ -44,10 +43,9 @@ export class ProposalService {
     return ordenado;
   }
   ventas(paisFiltro: String, MDPFiltro: String): Proposal[] {
-    let filtrado = this.proposals.ventas.filter((it) =>
-      paisFiltro == '' && MDPFiltro == ''
-        ? true
-        : it.pais == paisFiltro || it.metodo_de_pago == MDPFiltro
+    let filtrado = this.proposals.ventas.filter(
+      (it) =>
+        paisFiltro == '' && MDPFiltro == '' ? true : it.pais == paisFiltro //|| it.metodo_de_pago == MDPFiltro
     );
     let ordenado = filtrado.sort(function (a, b) {
       return (

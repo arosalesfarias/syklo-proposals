@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { bufferToggle } from 'rxjs/operators';
-import { Proposal, Proposals } from './domain/proposal';
+import { Proposal, ProposalFilter, Proposals } from './domain/proposal';
 import { ProposalService } from './services/proposal.service';
 
 @Component({
@@ -11,19 +11,19 @@ import { ProposalService } from './services/proposal.service';
 })
 export class AppComponent implements OnInit {
   constructor(public serv: ProposalService) {}
-  paisFiltro: String = '';
-  MDPFiltro: String = '';
+  proposalFilter: ProposalFilter;
 
   async ngOnInit() {
+    this.proposalFilter = new ProposalFilter();
     await this.serv.obtener();
   }
 
   ventas(): Proposal[] {
-    return this.serv.ventas(this.paisFiltro, this.MDPFiltro);
+    return this.serv.ventas(this.proposalFilter);
   }
 
   compras(): Proposal[] {
-    return this.serv.compras(this.paisFiltro, this.MDPFiltro);
+    return this.serv.compras(this.proposalFilter);
   }
 
   paises() {

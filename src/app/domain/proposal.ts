@@ -55,8 +55,8 @@ export class Proposal {
     );
   }
 
-  esFiltro(fPais: String): Boolean {
-    return fPais == '' ? true : this.pais == fPais;
+  esFiltro(pFilter: ProposalFilter): Boolean {
+    return pFilter.pais == '' ? true : this.pais == pFilter.pais;
   }
 }
 
@@ -80,5 +80,14 @@ export class Proposals {
         if (it.pais != null) return it.pais;
       })
       .sort((a, b) => a.localeCompare(b.toString()));
+  }
+}
+
+export class ProposalFilter {
+  pais: String;
+  metodoDePago: String;
+  constructor() {
+    this.pais = '';
+    this.metodoDePago = '';
   }
 }

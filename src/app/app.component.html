@@ -1,14 +1,14 @@
 <section class="section">
   <div class="container">
     <div class="select">
-      <select name="paisFiltro" [(ngModel)]="paisFiltro">
+      <select name="paisFiltro" [(ngModel)]="proposalFilter.pais">
         <option *ngFor="let pais of paises()" [value]="pais">
           {{ pais }}
         </option>
       </select>
     </div>
     <div class="select">
-      <select name="MDPFiltro" [(ngModel)]="MDPFiltro">
+      <select name="MDPFiltro" [(ngModel)]="proposalFilter.metodoDePago">
         <option *ngFor="let metodo of metodosDePago()" [value]="metodo">
           {{ metodo }}
         </option>

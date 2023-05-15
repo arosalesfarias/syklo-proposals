@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Proposal, Proposals } from '../domain/proposal';
+import { Proposal, ProposalFilter, Proposals } from '../domain/proposal';
 
 @Injectable({
   providedIn: 'root',
@@ -32,9 +32,9 @@ export class ProposalService {
     lista.map((it) => this.metodosDePago.add(it.metodo_de_pago));
   }
 
-  compras(paisFiltro: String, MDPFiltro: String): Proposal[] {
+  compras(pFilter: ProposalFilter): Proposal[] {
     let filtrado = this.proposals.compras.filter((it) =>
-      it.esFiltro(paisFiltro)
+      it.esFiltro(pFilter)
     );
     let ordenado = filtrado.sort(function (a, b) {
       return (
@@ -46,9 +46,9 @@ export class ProposalService {
     //console.log(ordenado);
     return ordenado;
   }
-  ventas(paisFiltro: String, MDPFiltro: String): Proposal[] {
+  ventas(pFilter: ProposalFilter): Proposal[] {
     let filtrado = this.proposals.ventas.filter((it) =>
-      it.esFiltro(paisFiltro)
+      it.esFiltro(pFilter)
     );
     let ordenado = filtrado.sort(function (a, b) {
       return (

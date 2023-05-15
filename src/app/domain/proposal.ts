@@ -54,6 +54,10 @@ export class Proposal {
       json.usuario
     );
   }
+
+  esFiltro(fPais: String): Boolean {
+    return fPais == '' ? true : this.pais == fPais;
+  }
 }
 
 export class Proposals {

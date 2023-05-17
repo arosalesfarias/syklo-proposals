@@ -2,6 +2,7 @@
   <div class="container">
     <div class="select">
       <select name="paisFiltro" [(ngModel)]="proposalFilter.pais">
+        <option [value]="''">Elija un Pais</option>
         <option *ngFor="let pais of paises()" [value]="pais">
           {{ pais }}
         </option>
@@ -9,6 +10,7 @@
     </div>
     <div class="select">
       <select name="MDPFiltro" [(ngModel)]="proposalFilter.metodoDePago">
+        <option [value]="''">Elija un Metodo de Pago</option>
         <option *ngFor="let metodo of metodosDePago()" [value]="metodo">
           {{ metodo }}
         </option>

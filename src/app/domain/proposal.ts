@@ -56,7 +56,14 @@ export class Proposal {
   }
 
   esFiltro(pFilter: ProposalFilter): Boolean {
-    return pFilter.pais == '' ? true : this.pais == pFilter.pais;
+    let flag: Boolean = true;
+    if (pFilter.pais != '' && pFilter.pais != this.pais) flag = false;
+    if (
+      pFilter.metodoDePago != '' &&
+      pFilter.metodoDePago != this.metodo_de_pago
+    )
+      flag = false;
+    return flag;
   }
 }
 

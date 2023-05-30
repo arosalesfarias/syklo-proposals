@@ -6,12 +6,7 @@ import { Proposal, ProposalFilter, Proposals } from '../domain/proposal';
   providedIn: 'root',
 })
 export class ProposalService {
-  proposals: Proposals = {
-    compras: [],
-    ventas: [],
-    all: () => [],
-    paisesList: () => [],
-  };
+  proposals: Proposals = new Proposals([], []);
   paises: Set<String> = new Set();
   metodosDePago: Set<String> = new Set();
 
@@ -33,9 +28,7 @@ export class ProposalService {
   }
 
   compras(pFilter: ProposalFilter): Proposal[] {
-    let filtrado = this.proposals.compras.filter((it) =>
-      it.esFiltro(pFilter)
-    );
+    let filtrado = this.proposals.compras.filter((it) => it.esFiltro(pFilter));
     let ordenado = filtrado.sort(function (a, b) {
       return (
         Number(a.precio.slice(0, a.precio.length - 4)) -
@@ -47,9 +40,7 @@ export class ProposalService {
     return ordenado;
   }
   ventas(pFilter: ProposalFilter): Proposal[] {
-    let filtrado = this.proposals.ventas.filter((it) =>
-      it.esFiltro(pFilter)
-    );
+    let filtrado = this.proposals.ventas.filter((it) => it.esFiltro(pFilter));
     let ordenado = filtrado.sort(function (a, b) {
       return (
         Number(b.precio.slice(0, b.precio.length - 4)) -
@@ -69,8 +60,8 @@ export class ProposalService {
   }
 
   MDPsFiltro(): Set<String> {
-    this.proposals.all().map((it) => {
-      this.metodosDePago.add(it.metodo_de_pago);
+    this.proposals.MdPList().map((it) => {
+      this.metodosDePago.add(it);
     });
     return this.metodosDePago;
   }

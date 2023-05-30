@@ -88,6 +88,14 @@ export class Proposals {
       })
       .sort((a, b) => a.localeCompare(b.toString()));
   }
+
+  MdPList(): String[] {
+    return this.all()
+      .map((it) => {
+        if (it.metodo_de_pago != null) return it.metodo_de_pago;
+      })
+      .sort((a, b) => a.localeCompare(b.toString()));
+  }
 }
 
 export class ProposalFilter {
@@ -98,7 +106,7 @@ export class ProposalFilter {
     this.metodoDePago = '';
   }
 
-  equals(pFilter: ProposalFilter): Boolean {
+  equals(pFilter: ProposalFilter) {
     return (
       this.metodoDePago == pFilter.metodoDePago && this.pais == pFilter.pais
     );

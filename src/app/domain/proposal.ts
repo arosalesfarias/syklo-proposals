@@ -97,4 +97,10 @@ export class ProposalFilter {
     this.pais = '';
     this.metodoDePago = '';
   }
+
+  equals(pFilter: ProposalFilter): Boolean {
+    return (
+      this.metodoDePago == pFilter.metodoDePago && this.pais == pFilter.pais
+    );
+  }
 }

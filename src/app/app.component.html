@@ -1,7 +1,11 @@
 <section class="section">
   <div class="container">
     <div class="select">
-      <select name="paisFiltro" [(ngModel)]="proposalFilter.pais">
+      <select
+        name="paisFiltro"
+        [(ngModel)]="proposalFilter.pais"
+        (change)="onChangePais()"
+      >
         <option [value]="''">Elija un Pais</option>
         <option *ngFor="let pais of paises()" [value]="pais">
           {{ pais }}

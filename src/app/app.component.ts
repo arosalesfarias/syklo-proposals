@@ -33,4 +33,8 @@ export class AppComponent implements OnInit {
   metodosDePago() {
     return this.serv.MDPsFiltro();
   }
+
+  onChangePais() {
+    this.proposalFilter.metodoDePago = '';
+  }
 }

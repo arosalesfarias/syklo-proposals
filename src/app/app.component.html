@@ -38,12 +38,12 @@
           </button>
         </header>
         <div class="card-content">
-          <div class="content">
-            {{ compra.pais }} - {{ compra.oferta }} - {{ compra.moneda }}
-          </div>
+          <div class="content">{{ compra.pais }} - {{ compra.oferta }}</div>
         </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">{{ compra.oferta }}</a>
+          <a href="#" class="card-footer-item"
+            >{{ compra.total }} {{ compra.moneda }}</a
+          >
           <a href="#" class="card-footer-item">{{ compra.precio }}</a>
           <a href="#" class="card-footer-item">{{ compra.metodo_de_pago }}</a>
         </footer>

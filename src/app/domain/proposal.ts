@@ -8,6 +8,7 @@ export class Proposal {
   precio: String;
   usuario: String;
   moneda: String;
+  total: number;
 
   constructor(
     ico: String,
@@ -27,7 +28,10 @@ export class Proposal {
     this.pais = pai;
     this.precio = prc;
     this.usuario = usu;
-    this.moneda = this.monto.slice(-3);
+    this.moneda = this.monto.slice(-4);
+    this.total =
+      Number(this.precio.slice(0, this.precio.length - 4)) *
+      Number(this.oferta.slice(0, this.oferta.length - 4));
   }
 
   esPais(): Boolean {

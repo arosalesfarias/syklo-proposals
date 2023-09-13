@@ -20,6 +20,14 @@
         </option>
       </select>
     </div>
+    <div class="select">
+      <select name="monedasFiltro" [(ngModel)]="proposalFilter.moneda">
+        <option [value]="''">Elija la Moneda</option>
+        <option *ngFor="let moneda of monedas()" [value]="moneda">
+          {{ moneda }}
+        </option>
+      </select>
+    </div>
   </div>
 </section>
 <section class="section">

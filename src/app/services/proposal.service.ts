@@ -9,6 +9,7 @@ export class ProposalService {
   proposals: Proposals = new Proposals([], []);
   paises: Set<String> = new Set();
   metodosDePago: Set<String> = new Set();
+  monedas: Set<String> = new Set();
 
   constructor(private http: HttpClient) {}
 
@@ -64,5 +65,12 @@ export class ProposalService {
       this.metodosDePago.add(it);
     });
     return this.metodosDePago;
+  }
+
+  monedasFiltro(): Set<String> {
+    this.proposals.monedasList().map((it) => {
+      this.monedas.add(it);
+    });
+    return this.monedas;
   }
 }

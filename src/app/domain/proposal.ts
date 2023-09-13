@@ -67,6 +67,11 @@ export class Proposal {
       pFilter.metodoDePago != this.metodo_de_pago
     )
       flag = false;
+    if (
+      pFilter.moneda != '' &&
+      pFilter.moneda != this.moneda
+    )
+        flag = false;
     return flag;
   }
 }
@@ -100,19 +105,28 @@ export class Proposals {
       })
       .sort((a, b) => a.localeCompare(b.toString()));
   }
+  monedasList(): String[] {
+    return this.all()
+      .map((it) => {
+        if (it.moneda != null) return it.moneda;
+      })
+      .sort((a, b) => a.localeCompare(b.toString()));
+  }
 }
 
 export class ProposalFilter {
   pais: String;
   metodoDePago: String;
+  moneda: String;
   constructor() {
     this.pais = '';
     this.metodoDePago = '';
+    this.moneda = '';
   }
 
   equals(pFilter: ProposalFilter) {
     return (
-      this.metodoDePago == pFilter.metodoDePago && this.pais == pFilter.pais
+      this.metodoDePago == pFilter.metodoDePago && this.pais == pFilter.pais && this.moneda == pFilter.moneda
     );
   }
 }

@@ -34,7 +34,12 @@ export class AppComponent implements OnInit {
     return this.serv.MDPsFiltro();
   }
 
+  monedas() {
+    return this.serv.monedasFiltro();
+  }
+
   onChangePais() {
     this.proposalFilter.metodoDePago = '';
+    this.proposalFilter.moneda = '';
   }
 }
